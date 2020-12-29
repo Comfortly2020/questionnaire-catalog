@@ -1,0 +1,1 @@
+INSERT INTO questionnaire_data (question, type, active) VALUES ("How old are you?", "NUMBER", TRUE);

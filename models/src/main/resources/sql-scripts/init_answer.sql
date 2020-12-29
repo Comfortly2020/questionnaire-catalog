@@ -1,0 +1,1 @@
+INSERT INTO answer_data (trip_id, user_id, question_id, question, type, answer, timestamp) VALUES (1, "user1", 1, "How old are you?", "NUMBER", "19", TIMESTAMP '2020-10-28 15:50:12');

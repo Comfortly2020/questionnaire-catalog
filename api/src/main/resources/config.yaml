@@ -1,0 +1,38 @@
+kumuluzee:
+  name: questionnaire-catalog-service
+  env:
+    name: dev
+  version: 1.0.0
+  server:
+    base-url: http://localhost:8080
+    http:
+      port: 8080
+  datasources:
+    - jndi-name: jdbc/QuestionnaireDataDS
+      connection-url: jdbc:postgresql://0.0.0.0:5432/questionnaire-data
+      username: dbuser
+      password: postgres
+      max-pool-size: 20
+    - jndi-name: jdbc/AnswerDataDS
+      connection-url: jdbc:postgresql://0.0.0.0:5432/answer-data
+      username: dbuser
+      password: postgres
+      max-pool-size: 20
+  config:
+    consul:
+      agent: http://localhost:8500
+  health:
+    checks:
+      - data-source-health-check:
+        type: liveness
+        jndi-name: jdbc/QuestionnaireDataDS
+      - data-source-health-check:
+        type: liveness
+        jndi-name: jdbc/AnswerDataDS
+  metrics:
+    web-instrumentation:
+      - name: questionnaire-endpoint
+        url-pattern: /v1/questionnaire
+rest-properties:
+  config:
+    broken: false
