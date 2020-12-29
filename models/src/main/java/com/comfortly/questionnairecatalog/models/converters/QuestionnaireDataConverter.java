@@ -4,7 +4,11 @@ import com.comfortly.questionnairecatalog.lib.QuestionType;
 import com.comfortly.questionnairecatalog.lib.QuestionnaireData;
 import com.comfortly.questionnairecatalog.models.entities.QuestionnaireDataEntity;
 
+import java.util.Arrays;
+
 public class QuestionnaireDataConverter {
+
+    private static final String POSSIBLE_ANSWERS_SPLITTER = ";next-answer;";
 
     public static QuestionnaireData toDto(QuestionnaireDataEntity entity) {
 
@@ -19,6 +23,7 @@ public class QuestionnaireDataConverter {
             }
         }
         dto.setType(questionType);
+        dto.setPossibleAnswers(Arrays.asList(entity.getPossibleAnswers().split(POSSIBLE_ANSWERS_SPLITTER)));
         dto.setActive(entity.getActive());
 
         return dto;
@@ -29,6 +34,7 @@ public class QuestionnaireDataConverter {
         QuestionnaireDataEntity entity = new QuestionnaireDataEntity();
         entity.setQuestion(dto.getQuestion());
         entity.setType(dto.getType().toString());
+        entity.setPossibleAnswers(String.join(POSSIBLE_ANSWERS_SPLITTER, dto.getPossibleAnswers()));
         entity.setActive(dto.getActive());
 
         return entity;

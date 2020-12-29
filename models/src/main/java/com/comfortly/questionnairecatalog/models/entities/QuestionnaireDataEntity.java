@@ -21,6 +21,9 @@ public class QuestionnaireDataEntity {
     @Column(name = "type")
     private String type;
 
+    @Column(name = "possible_answers")
+    private String possibleAnswers;
+
     @Column(name = "active")
     private Boolean active;
 
@@ -46,6 +49,14 @@ public class QuestionnaireDataEntity {
 
     public void setType(String type) {
         this.type = type;
+    }
+
+    public String getPossibleAnswers() {
+        return possibleAnswers;
+    }
+
+    public void setPossibleAnswers(String possibleAnswers) {
+        this.possibleAnswers = possibleAnswers;
     }
 
     public Boolean getActive() {

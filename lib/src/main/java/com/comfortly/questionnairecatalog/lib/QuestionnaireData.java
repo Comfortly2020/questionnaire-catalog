@@ -1,9 +1,12 @@
 package com.comfortly.questionnairecatalog.lib;
 
+import java.util.List;
+
 public class QuestionnaireData {
     private Integer id;
     private String question;
     private QuestionType type;
+    private List<String> possibleAnswers;
     private Boolean active;
 
     public Integer getId() {
@@ -28,6 +31,14 @@ public class QuestionnaireData {
 
     public void setType(QuestionType type) {
         this.type = type;
+    }
+
+    public List<String> getPossibleAnswers() {
+        return possibleAnswers;
+    }
+
+    public void setPossibleAnswers(List<String> possibleAnswers) {
+        this.possibleAnswers = possibleAnswers;
     }
 
     public Boolean getActive() {
