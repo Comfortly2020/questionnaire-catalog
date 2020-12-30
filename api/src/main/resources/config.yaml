@@ -33,6 +33,8 @@ kumuluzee:
     web-instrumentation:
       - name: questionnaire-endpoint
         url-pattern: /v1/questionnaire
+      - name: answers-endpoint
+        url-pattern: /v1/answers
 rest-properties:
   config:
     broken: false
