@@ -9,12 +9,12 @@ kumuluzee:
       port: 8080
   datasources:
     - jndi-name: jdbc/QuestionnaireDataDS
-      connection-url: jdbc:postgresql://0.0.0.0:5432/questionnaire-data
+      connection-url: jdbc:postgresql://0.0.0.0:5433/questionnaire-data
       username: dbuser
       password: postgres
       max-pool-size: 20
     - jndi-name: jdbc/AnswerDataDS
-      connection-url: jdbc:postgresql://0.0.0.0:5432/answer-data
+      connection-url: jdbc:postgresql://0.0.0.0:5434/answer-data
       username: dbuser
       password: postgres
       max-pool-size: 20

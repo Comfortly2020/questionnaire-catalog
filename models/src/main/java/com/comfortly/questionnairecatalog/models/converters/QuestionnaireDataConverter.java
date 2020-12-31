@@ -23,7 +23,9 @@ public class QuestionnaireDataConverter {
             }
         }
         dto.setType(questionType);
-        dto.setPossibleAnswers(Arrays.asList(entity.getPossibleAnswers().split(POSSIBLE_ANSWERS_SPLITTER)));
+        if (entity.getPossibleAnswers() != null) {
+            dto.setPossibleAnswers(Arrays.asList(entity.getPossibleAnswers().split(POSSIBLE_ANSWERS_SPLITTER)));
+        }
         dto.setActive(entity.getActive());
 
         return dto;
@@ -34,7 +36,9 @@ public class QuestionnaireDataConverter {
         QuestionnaireDataEntity entity = new QuestionnaireDataEntity();
         entity.setQuestion(dto.getQuestion());
         entity.setType(dto.getType().toString());
-        entity.setPossibleAnswers(String.join(POSSIBLE_ANSWERS_SPLITTER, dto.getPossibleAnswers()));
+        if (dto.getPossibleAnswers() != null && !dto.getPossibleAnswers().isEmpty()) {
+            entity.setPossibleAnswers(String.join(POSSIBLE_ANSWERS_SPLITTER, dto.getPossibleAnswers()));
+        }
         entity.setActive(dto.getActive());
 
         return entity;
