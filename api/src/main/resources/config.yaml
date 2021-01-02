@@ -12,12 +12,12 @@ kumuluzee:
       connection-url: jdbc:postgresql://0.0.0.0:5433/questionnaire-data
       username: dbuser
       password: postgres
-      max-pool-size: 20
+      max-pool-size: 2
     - jndi-name: jdbc/AnswerDataDS
       connection-url: jdbc:postgresql://0.0.0.0:5434/answer-data
       username: dbuser
       password: postgres
-      max-pool-size: 20
+      max-pool-size: 2
   config:
     consul:
       agent: http://localhost:8500
@@ -35,6 +35,27 @@ kumuluzee:
         url-pattern: /v1/questionnaire
       - name: answers-endpoint
         url-pattern: /v1/answers
+  streaming:
+    kafka:
+      producer:
+        bootstrap-servers: rocket-01.srvs.cloudkafka.com:9094
+        acks: all
+        retries: 0
+        batch-size: 16384
+        linger-ms: 1
+        buffer-memory: 33554432
+        key-serializer: org.apache.kafka.common.serialization.StringSerializer
+        value-serializer: org.apache.kafka.common.serialization.StringSerializer
+        security-protocol: SASL_SSL
+        sasl-mechanism: SCRAM-SHA-256
+        group-id: trips
+        enable-auto-commit: true
+        auto-commit-interval-ms: 1000
+        auto-offset-reset: earliest
+        session-timeout-ms: 30000
+        sasl-jaas-config:
 rest-properties:
   config:
     broken: false
+streaming-properties:
+  processing-topic: hus39ssl-trips_processing

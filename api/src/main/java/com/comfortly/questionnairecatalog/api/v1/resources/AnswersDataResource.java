@@ -2,6 +2,7 @@ package com.comfortly.questionnairecatalog.api.v1.resources;
 
 import com.comfortly.questionnairecatalog.lib.AnswerData;
 import com.comfortly.questionnairecatalog.services.beans.AnswerDataBean;
+import com.comfortly.questionnairecatalog.services.streaming.EventProducerImpl;
 
 import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
@@ -18,6 +19,9 @@ public class AnswersDataResource {
 
     @Inject
     private AnswerDataBean answerDataBean;
+
+    @Inject
+    private EventProducerImpl eventProducer;
 
     @GET
     @Path("/{tripDataId}")
@@ -51,6 +55,11 @@ public class AnswersDataResource {
         }
 
         answerDataBean.postAnswers(answerDataList);
+
+        if (!answerDataList.isEmpty()) {
+            Integer tripId = answerDataList.get(0).getTripId();
+            eventProducer.produceMessage(userId, tripId);
+        }
 
         return Response.status(Response.Status.OK).build();
 

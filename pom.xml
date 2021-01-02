@@ -28,6 +28,7 @@
         <kumuluzee-health.version>2.3.1</kumuluzee-health.version>
         <kumuluzee-config-mp.version>1.4.0</kumuluzee-config-mp.version>
         <kumuluzee-metrics.version>2.3.0</kumuluzee-metrics.version>
+        <kumuluzee-streaming.version>1.2.1</kumuluzee-streaming.version>
 
         <postgresql.version>42.2.17</postgresql.version>
     </properties>
@@ -95,6 +96,12 @@
                 <groupId>com.comfortly</groupId>
                 <artifactId>questionnaire-catalog-lib</artifactId>
                 <version>${project.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.kumuluz.ee.streaming</groupId>
+                <artifactId>kumuluzee-streaming-kafka</artifactId>
+                <version>${kumuluzee-streaming.version}</version>
             </dependency>
 
             <dependency>
