@@ -9,10 +9,12 @@ public class AnswerDataConverter {
     public static AnswerData toDto(AnswerDataEntity entity) {
 
         AnswerData dto = new AnswerData();
+        dto.setId(entity.getId());
         dto.setTripId(entity.getTripId());
         dto.setUserId(entity.getUserId());
         dto.setQuestionId(entity.getQuestionId());
         dto.setQuestion(entity.getQuestion());
+        dto.setAnswer(entity.getAnswer());
         QuestionType questionType = QuestionType.UNKNOWN;
         for (QuestionType type : QuestionType.values()) {
             if (type.toString().equals(entity.getType())) {
