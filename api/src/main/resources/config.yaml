@@ -12,13 +12,13 @@ kumuluzee:
       connection-url: jdbc:postgresql://0.0.0.0:5433/questionnaire-data
       username: dbuser
       password: postgres
-      max-pool-size: 2
+      pool:
+        max-size: 5
     - jndi-name: jdbc/AnswerDataDS
       connection-url: jdbc:postgresql://0.0.0.0:5434/answer-data
       username: dbuser
       password: postgres
       pool:
-        min-size: 2
         max-size: 5
   config:
     consul:
