@@ -23,14 +23,11 @@ kumuluzee:
   config:
     consul:
       agent: http://52.224.38.169:80
-  health:
-    checks:
-      - data-source-health-check:
-          type: liveness
-          jndi-name: jdbc/QuestionnaireDataDS
-      - data-source-health-check:
-          type: liveness
-          jndi-name: jdbc/AnswerDataDS
+#  health:
+#    checks:
+#      data-source-health-check:
+#        - jndi-name: jdbc/QuestionnaireDataDS
+#        - jndi-name: jdbc/AnswerDataDS
   metrics:
     web-instrumentation:
       - name: questionnaire-endpoint
