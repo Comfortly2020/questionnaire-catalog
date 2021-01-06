@@ -26,11 +26,11 @@ kumuluzee:
   health:
     checks:
       - data-source-health-check:
-        type: liveness
-        jndi-name: jdbc/QuestionnaireDataDS
+          type: liveness
+          jndi-name: jdbc/QuestionnaireDataDS
       - data-source-health-check:
-        type: liveness
-        jndi-name: jdbc/AnswerDataDS
+          type: liveness
+          jndi-name: jdbc/AnswerDataDS
   metrics:
     web-instrumentation:
       - name: questionnaire-endpoint
