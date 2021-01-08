@@ -25,9 +25,10 @@ kumuluzee:
       agent: http://52.224.38.169:80
 #  health:
 #    checks:
-#      data-source-health-check:
-#        - jndi-name: jdbc/QuestionnaireDataDS
-#        - jndi-name: jdbc/AnswerDataDS
+#      kafka-health-check:
+#        bootstrap-servers: rocket-01.srvs.cloudkafka.com:9094
+#        minimum-available-nodes: 1
+#        request-timeout-ms: 1000
   metrics:
     web-instrumentation:
       - name: questionnaire-endpoint
